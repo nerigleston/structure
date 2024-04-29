@@ -1,51 +1,63 @@
-Aqui está o README.md para o seu projeto:
+# Estrutura de Pasta
 
----
-
-# Estrutura de Pasta Automatizada para Projetos React
-
-Este projeto oferece uma maneira fácil de criar estruturas de pasta personalizadas para seus projetos React. Com este script simples, você pode criar estruturas de pasta para componentes ou páginas React, incluindo arquivos `index.jsx`, `model.jsx`, `view.jsx` e `style.js`, com o conteúdo padrão pré-definido.
-
-## Instalação
-
-Para usar este script em seu projeto, você precisa instalar as dependências necessárias. Execute o seguinte comando:
-
-```bash
-npm install 
-```
+Este é um script Node.js simples para criar uma estrutura de pasta básica em um projeto, especificamente para os tipos 'components' e 'pages'.
 
 ## Uso
 
-Após instalar as dependências, você pode executar o script `create-folders.js` fornecido neste projeto para criar a estrutura de pasta desejada. O script solicitará que você insira o nome da pasta e o tipo de pasta (componentes ou páginas).
+Este script cria automaticamente uma estrutura de pasta com arquivos necessários para o desenvolvimento de componentes ou páginas em um projeto React. Siga estas etapas para usar o script:
 
-```bash
-node create-folders.js <tipo-de-pasta>
-```
+1. **Pré-requisitos:** Certifique-se de ter o Node.js instalado em seu sistema.
 
-Substitua `<tipo-de-pasta>` por `components` ou `pages`, dependendo do tipo de pasta que deseja criar.
+2. **Instalar o Pacote:** Instale o pacote a partir do GitHub com o seguinte comando:
+    ```bash
+    npm install https://github.com/nerigleston/structure
+    ```
 
-Por exemplo, para criar uma estrutura de pasta para componentes:
+3. **Instalar Dependências:** Instale as dependências do projeto com o seguinte comando:
 
-```bash
-node create-folders.js components
-```
+    ```bash
+    npm install
+    ```
 
-## Estrutura de Pasta Criada
+4. **Executar o Script:** Execute o script com o seguinte comando:
 
-O script criará a seguinte estrutura de pasta dentro do diretório `src` do seu projeto:
+    ```bash
+    npm run create-folder [components ou pages]
+    ```
+
+5. **Siga as Instruções:** Siga as instruções no terminal para inserir o nome da pasta e o tipo de pasta ('components' ou 'pages').
+
+6. **Estrutura de Pasta Criada:** A estrutura de pasta será criada no diretório `src` do seu projeto, contendo os arquivos necessários para o tipo de pasta especificado.
+
+## Estrutura de Arquivos
+
+A estrutura de pasta criada pelo script será semelhante a:
 
 ```
 src/
+│
 ├── components/
-│   └── NomeDaPasta/
+│   └── [NomeDaPasta]/
 │       ├── index.jsx
-│       ├── model.jsx
-│       ├── view.jsx
 │       └── style.js
+│
 └── pages/
-    └── NomeDaPasta/
+    └── [NomeDaPasta]/
         ├── index.jsx
         ├── model.jsx
         ├── view.jsx
         └── style.js
 ```
+
+## Scripts
+
+- `npm run create-folder [components ou pages]`: Executa o script para criar a estrutura de pasta, solicitando o nome da pasta e o tipo de pasta ('components' ou 'pages').
+
+## Dependências
+
+Este projeto usa as seguintes dependências:
+
+- `fs`: Para manipular arquivos e diretórios.
+- `readline-sync`: Para ler a entrada do usuário no terminal.
+- `mkdirp`: Para criar diretórios recursivamente.
+- `touch-cli`: Para criar arquivos vazios.
