@@ -9,7 +9,7 @@
   },
   "author": "Neri",
   "license": "ISC",
-  "devDependencies": {
+  "dependencies": {
     "fs": "^0.0.1-security",
     "mkdirp": "^3.0.1",
     "readline-sync": "^1.4.10",
