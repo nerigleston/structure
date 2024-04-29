@@ -1,11 +1,11 @@
 {
   "name": "structure",
-  "version": "1.0.0",
-  "description": "",
+  "version": "1.0.2",
+  "description": "Create a folder structure",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "create-folders": "node src/index.js"
+    "create-folder": "node index.js"
   },
   "author": "Neri",
   "license": "ISC",
