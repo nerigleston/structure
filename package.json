@@ -1,6 +1,6 @@
 {
   "name": "structure",
-  "version": "1.0.4",
+  "version": "2.0.0",
   "description": "Create a folder structure",
   "main": "index.js",
   "scripts": {
@@ -10,6 +10,7 @@
   "author": "Neri",
   "license": "ISC",
   "dependencies": {
+    "ejs": "^3.1.10",
     "fs": "^0.0.1-security",
     "mkdirp": "^3.0.1",
     "readline-sync": "^1.4.10",
