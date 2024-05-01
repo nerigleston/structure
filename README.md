@@ -1,10 +1,10 @@
 # Estrutura de Pasta
 
-Este é um script Node.js simples para criar uma estrutura de pasta básica em um projeto, especificamente para os tipos 'components' e 'pages'.
+Este é um script Node.js simples para criar uma estrutura de pasta básica em um projeto, especificamente para os tipos 'components', 'pages' e outros.
 
 ## Uso
 
-Este script cria automaticamente uma estrutura de pasta com arquivos necessários para o desenvolvimento de componentes ou páginas em um projeto React. Siga estas etapas para usar o script:
+Este script cria automaticamente uma estrutura de pasta com arquivos necessários para o desenvolvimento de componentes, páginas ou outros tipos de arquivos em um projeto React. Siga estas etapas para usar o script:
 
 1. **Pré-requisitos:** Certifique-se de ter o Node.js instalado em seu sistema.
 
@@ -22,10 +22,10 @@ Este script cria automaticamente uma estrutura de pasta com arquivos necessário
 4. **Executar o Script:** Execute o script com o seguinte comando:
 
     ```bash
-    npm run create-folder [components ou pages]
+    npm run create-folder [tipo-da-pasta] [nome-da-pasta]
     ```
 
-5. **Siga as Instruções:** Siga as instruções no terminal para inserir o nome da pasta e o tipo de pasta ('components' ou 'pages').
+5. **Siga as Instruções:** Siga as instruções no terminal para inserir o nome da pasta e o tipo de pasta desejado.
 
 6. **Estrutura de Pasta Criada:** A estrutura de pasta será criada no diretório `src` do seu projeto, contendo os arquivos necessários para o tipo de pasta especificado.
 
@@ -41,23 +41,30 @@ src/
 │       ├── index.jsx
 │       └── style.js
 │
-└── pages/
+├── pages/
+│   └── [NomeDaPasta]/
+│       ├── index.jsx
+│       ├── model.jsx
+│       ├── view.jsx
+│       └── style.js
+│
+└── [TipoOutro]/
     └── [NomeDaPasta]/
         ├── index.jsx
-        ├── model.jsx
-        ├── view.jsx
         └── style.js
 ```
 
 ## Scripts
 
-- `npm run create-folder [components ou pages]`: Executa o script para criar a estrutura de pasta, solicitando o nome da pasta e o tipo de pasta ('components' ou 'pages').
+- `npm run create-folder [tipo-da-pasta] [nome-da-pasta]`: Executa o script para criar a estrutura de pasta, solicitando o nome da pasta e o tipo de pasta ('components', 'pages' ou outro).
 
 ## Dependências
 
 Este projeto usa as seguintes dependências:
 
 - `fs`: Para manipular arquivos e diretórios.
-- `readline-sync`: Para ler a entrada do usuário no terminal.
-- `mkdirp`: Para criar diretórios recursivamente.
-- `touch-cli`: Para criar arquivos vazios.
+- `path`: Para lidar com caminhos de arquivo.
+- `ejs`: Para renderizar modelos EJS.
+- `config.json`: Para configurar os tipos de pasta e os arquivos a serem criados.
+  
+Lembre-se de manter o `config.json` atualizado conforme necessário.
