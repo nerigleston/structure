@@ -1,55 +1,47 @@
 const fs = require('fs');
 const path = require('path');
+const ejs = require('ejs');
+const config = require('./config.json');
 
 const args = process.argv.slice(2);
 const folderType = args[0] || '';
 const folderName = args[1] || '';
 
-const validFolderTypes = ['components', 'pages'];
+const validFolderTypes = Object.keys(config.fileConfig);
 
 if (!validFolderTypes.includes(folderType)) {
-    console.error('Tipo de pasta inválido. Use "components" ou "pages".');
+    console.error(`Tipo de pasta inválido. Use ${validFolderTypes.join(', ')}`);
     process.exit(1);
 }
 
 if (!folderName.trim()) {
-    console.error('Nome da pasta não pode estar vazio, deve ser ex: "npm run create-folder components NomeDaPasta"');
+    console.error(`Nome da pasta não pode estar vazio, deve ser ex: "npm run create-folder ${folderType} nome-da-pasta"`);
     process.exit(1);
 }
 
-const fileConfig = {
-    components: ['index.jsx', 'style.js'],
-    pages: ['index.jsx', 'model.jsx', 'view.jsx', 'style.js'],
-};
+if (folderName.includes('/') || folderName.includes('\\')) {
+    console.error('Nome da pasta inválido.');
+    process.exit(1);
+}
+
+const filesToCreate = config.fileConfig[folderType];
 
 const folderPath = path.join('src', folderType, folderName);
 
 try {
     fs.mkdirSync(folderPath, { recursive: true });
 
-    const filesToCreate = fileConfig[folderType];
-
     filesToCreate.forEach((file) => {
         const filePath = path.join(folderPath, file);
         let fileContent = '';
-
-        switch (file) {
-            case 'index.jsx':
-                fileContent = folderType === 'components'
-                    ? `import * as Styled from './style';\n\nexport default function ${folderName}() {\n  return (\n    <Styled.ContainerPage></Styled.ContainerPage>\n  );\n}\n`
-                    : `import React from 'react';\nimport use${folderName} from './model';\nimport ${folderName}View from './view';\n\nexport default function ${folderName}() {\n  const ${folderName}Model = use${folderName}();\n\n  return <${folderName}View {...${folderName}Model} />;\n}\n`;
-                break;
-            case 'model.jsx':
-                fileContent = `export default function use${folderName}() {\n  return {};\n}\n`;
-                break;
-            case 'view.jsx':
-                fileContent = `import React from 'react';\nimport * as Styled from './style';\n\nexport default function ${folderName}View() {\n  return (\n    <Styled.ContainerPage></Styled.ContainerPage>\n  );\n}\n`;
-                break;
-            case 'style.js':
-                fileContent = `import styled from 'styled-components';\n\nexport const ContainerPage = styled.div\`\`;`;
-                break;
+    
+        if (!config.fileContent[file]) {
+            console.error(`Conteúdo do arquivo "${file}" não encontrado.`);
+            return;
         }
-
+    
+        fileContent = ejs.render(config.fileContent[file], { folderType, folderName });
+    
         if (!fs.existsSync(filePath)) {
             fs.writeFileSync(filePath, fileContent);
             console.log(`Arquivo "${file}" criado com sucesso em "${folderPath}"`);
@@ -61,3 +53,4 @@ try {
     console.error('Erro ao criar a pasta:', err);
     process.exit(1);
 }
+
