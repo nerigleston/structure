@@ -1,6 +1,6 @@
 {
   "name": "structure",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Create a folder structure",
   "main": "index.js",
   "scripts": {

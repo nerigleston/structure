@@ -5,17 +5,17 @@ const path = require('path');
 const args = process.argv.slice(2);
 const folderType = args[0] || '';
 
-const folderName = readlineSync.question('Digite o nome da pasta: ');
-
 const validFolderTypes = ['components', 'pages'];
-
-if (!folderName.trim()) {
-    console.error('Nome da pasta não pode estar vazio.');
-    process.exit(1);
-}
 
 if (!validFolderTypes.includes(folderType)) {
     console.error('Tipo de pasta inválido. Use "components" ou "pages".');
+    process.exit(1);
+}
+
+const folderName = readlineSync.question('Digite o nome da pasta: ');
+
+if (!folderName.trim()) {
+    console.error('Nome da pasta não pode estar vazio.');
     process.exit(1);
 }
 
