@@ -4,6 +4,14 @@ const ejs = require('ejs');
 const config = require('./config.json');
 
 const args = process.argv.slice(2);
+const command = args[0];
+
+if (command === 'help') {
+    console.log('Uso: npm run create-folder <tipo-da-pasta> <nome-da-pasta>');
+    console.log('Exemplo: npm run create-folder components MeuComponente');
+    process.exit(0);
+}
+
 const folderType = args[0] || '';
 const folderName = args[1] || '';
 
@@ -53,4 +61,3 @@ try {
     console.error('Erro ao criar a pasta:', err);
     process.exit(1);
 }
-
