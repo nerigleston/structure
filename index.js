@@ -1,9 +1,9 @@
-const readlineSync = require('readline-sync');
 const fs = require('fs');
 const path = require('path');
 
 const args = process.argv.slice(2);
 const folderType = args[0] || '';
+const folderName = args[1] || '';
 
 const validFolderTypes = ['components', 'pages'];
 
@@ -12,10 +12,8 @@ if (!validFolderTypes.includes(folderType)) {
     process.exit(1);
 }
 
-const folderName = readlineSync.question('Digite o nome da pasta: ');
-
 if (!folderName.trim()) {
-    console.error('Nome da pasta não pode estar vazio.');
+    console.error('Nome da pasta não pode estar vazio, deve ser ex: "npm run create-folder components NomeDaPasta"');
     process.exit(1);
 }
 
@@ -54,12 +52,12 @@ try {
 
         if (!fs.existsSync(filePath)) {
             fs.writeFileSync(filePath, fileContent);
+            console.log(`Arquivo "${file}" criado com sucesso em "${folderPath}"`);
         } else {
-            console.error(`O arquivo ${filePath} já existe. Pulando...`);
+            console.error(`Arquivo "${file}" já existe na pasta "${folderPath}"`);
         }
     });
-
-    console.log(`Estrutura de pasta criada com sucesso para "${folderName}"`);
 } catch (err) {
-    console.error(err);
+    console.error('Erro ao criar a pasta:', err);
+    process.exit(1);
 }
