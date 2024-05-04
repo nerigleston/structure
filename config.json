@@ -1,17 +1,33 @@
 {
-    "fileConfig": {
-        "components": ["index.jsx", "style.js"],
-        "pages": ["index.jsx", "model.jsx", "view.jsx", "style.js"],
-        "utils": ["index.js"],
-        "services": ["index.js"],
-        "hooks": ["index.js"],
-        "routes": ["index.js"]
-    },
-    "fileContent": {
-        "index.jsx": "<% if (folderType === 'components') { %>import * as Styled from './style';\n\nexport default function <%= folderName %>() {\n  return (\n    <Styled.ContainerPage></Styled.ContainerPage>\n  );\n}\n<% } else { %>import React from 'react';\nimport use<%= folderName %> from './model';\nimport <%= folderName %>View from './view';\n\nexport default function <%= folderName %>() {\n  const <%= folderName %>Model = use<%= folderName %>();\n\n  return <<%= folderName %>View {...<%= folderName %>Model} />;\n}\n<% } %>",
-        "model.jsx": "export default function use<%= folderName %>() {\n  return {};\n}",
-        "view.jsx": "import React from 'react';\nimport * as Styled from './style';\n\nexport default function <%= folderName %>View() {\n  return (\n    <Styled.ContainerPage></Styled.ContainerPage>\n  );\n}\n",
-        "style.js": "import styled from 'styled-components';\n\nexport const ContainerPage = styled.div``;",
-        "index.js": "export default function <%= folderName %>() {\n  return {};\n}"
-    }
+	"fileConfig": {
+		"components": [
+			"index.jsx",
+			"style.js"
+		],
+		"pages": [
+			"index.jsx",
+			"model.jsx",
+			"view.jsx",
+			"style.js"
+		],
+		"utils": [
+			"index.js"
+		],
+		"services": [
+			"index.js"
+		],
+		"hooks": [
+			"index.js"
+		],
+		"routes": [
+			"index.js"
+		]
+	},
+	"fileContent": {
+		"index.jsx": "<% if (folderType === 'components') { %>import * as Styled from './style';\n\nexport default function <%= folderName %>() {\n  return (\n    <Styled.ContainerPage></Styled.ContainerPage>\n  );\n}\n<% } else { %>import React from 'react';\nimport use<%= folderName %> from './model';\nimport <%= folderName %>View from './view';\n\nexport default function <%= folderName %>() {\n  const <%= folderName %>Model = use<%= folderName %>();\n\n  return <<%= folderName %>View {...<%= folderName %>Model} />;\n}\n<% } %>",
+		"model.jsx": "export default function use<%= folderName %>() {\n  return {};\n}",
+		"view.jsx": "import React from 'react';\nimport * as Styled from './style';\n\nexport default function <%= folderName %>View() {\n  return (\n    <Styled.ContainerPage></Styled.ContainerPage>\n  );\n}\n",
+		"style.js": "import styled from 'styled-components';\n\nexport const ContainerPage = styled.div``;",
+		"index.js": "export default function <%= folderName %>() {\n  return {};\n}"
+	}
 }
