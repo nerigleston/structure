@@ -60,8 +60,8 @@ acesse a documentação em: https://github.com/nerigleston/structure/blob/master
 }
 
 const folderType = args[0] || ''
-let folderName = args[1] || ''
-let parentFolderName = ''
+const folderName = args[1] || ''
+const parentFolderName = ''
 
 if (folderName.includes('/')) {
   ;[parentFolderName, folderName] = folderName.split('/')
@@ -81,9 +81,9 @@ if (!folderName.trim()) {
   process.exit(1)
 }
 
-let filesToCreate = config.fileConfig[folderType]
+const filesToCreate = config.fileConfig[folderType]
 
-let folderPath = path.join('src', folderType, folderName)
+const folderPath = path.join('src', folderType, folderName)
 
 if (folderType === 'pages' && parentFolderName.trim()) {
   folderPath = path.join(
@@ -101,7 +101,7 @@ try {
 
   filesToCreate.forEach((file) => {
     const filePath = path.join(folderPath, file)
-    let fileContent = ''
+    const fileContent = ''
 
     if (!config.fileContent[file]) {
       console.error(`Conteúdo do arquivo "${file}" não encontrado.`)
